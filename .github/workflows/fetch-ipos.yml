@@ -1,0 +1,45 @@
+
+name: Fetch IPOs
+
+on:
+  schedule:
+    - cron: '30 7 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-ipos:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq curl
+
+      - name: Run IPO script
+        env:
+          IPOALERTS_API_KEY: ${{ secrets.IPOALERTS_API_KEY }}
+        run: bash fetch_open_ipos.sh
+
+      - name: Commit updated JSON
+        run: |
+          if [ -f open_ipos.json ]; then
+            git add open_ipos.json
+            if ! git diff --cached --quiet; then
+              git config user.name "github-actions[bot]"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git commit -m "Update IPO data"
+              git push
+            else
+              echo "JSON unchanged; no commit needed."
+            fi
+          else
+            echo "open_ipos.json was not generated."
+            exit 1
+          fi
