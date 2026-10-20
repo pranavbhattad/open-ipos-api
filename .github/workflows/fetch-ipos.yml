@@ -8,6 +8,12 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
 
 jobs:
   fetch-ipos:
@@ -27,19 +33,31 @@ jobs:
           IPOALERTS_API_KEY: ${{ secrets.IPOALERTS_API_KEY }}
         run: bash fetch_open_ipos.sh
 
+      - name: Validate JSON
+        run: jq -e 'type == "array"' open_ipos.json > /dev/null
+
       - name: Commit updated JSON
         run: |
-          if [ -f open_ipos.json ]; then
-            git add open_ipos.json
-            if ! git diff --cached --quiet; then
-              git config user.name "github-actions[bot]"
-              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-              git commit -m "Update IPO data"
-              git push
-            else
-              echo "JSON unchanged; no commit needed."
-            fi
+          git add open_ipos.json
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Update IPO data"
+            git push
           else
-            echo "open_ipos.json was not generated."
-            exit 1
+            echo "JSON unchanged; no commit needed."
           fi
+
+      - name: Prepare GitHub Pages files
+        run: |
+          mkdir -p public
+          cp open_ipos.json public/open_ipos.json
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
