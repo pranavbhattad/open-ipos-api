@@ -1,9 +1,9 @@
-
 name: Fetch IPOs
 
 on:
   schedule:
-    - cron: '30 7 * * 1-5'
+    - cron: '0 1 * * 1-5'
+      timezone: 'Asia/Kolkata'
   workflow_dispatch:
 
 permissions:
