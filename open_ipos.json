@@ -1,7 +1,17 @@
 [
   {
-    "name": "Eaaa India Alternatives Limited",
-    "symbol": "EDELALTS",
+    "name": "Sfc Environmental Technologies Limited",
+    "symbol": "SFCTECH",
     "type": "mainboard"
+  },
+  {
+    "name": "Bls Polymers Limited",
+    "symbol": "BLSPOLY",
+    "type": "mainboard"
+  },
+  {
+    "name": "Wiscon Industries Limited",
+    "symbol": "WISCON",
+    "type": "SME"
   }
 ]
