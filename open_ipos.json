@@ -1,17 +1,12 @@
 [
   {
-    "name": "Sfc Environmental Technologies Limited",
-    "symbol": "SFCTECH",
+    "name": "M. K. Sons Fine Jewels Limited",
+    "symbol": "MKSONS",
     "type": "mainboard"
   },
   {
-    "name": "Bls Polymers Limited",
-    "symbol": "BLSPOLY",
-    "type": "mainboard"
-  },
-  {
-    "name": "Wiscon Industries Limited",
-    "symbol": "WISCON",
+    "name": "Carver Roboweld Limited",
+    "symbol": "CRL",
     "type": "SME"
   }
 ]
