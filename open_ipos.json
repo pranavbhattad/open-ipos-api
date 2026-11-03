@@ -1,12 +1,22 @@
 [
   {
-    "name": "Bombay Coated And Special Steels Limited",
-    "symbol": "BCSSL",
-    "type": "mainboard"
+    "name": "HGS (India) Limited",
+    "symbol": "HGSINDIALT",
+    "type": "SME"
   },
   {
-    "name": "Antala Industries Limited",
-    "symbol": "ANTALA",
+    "name": "Maxwell Engineering Solutions Limited",
+    "symbol": "MAXENGS",
+    "type": "SME"
+  },
+  {
+    "name": "Johnsoncab Electricals Limited",
+    "symbol": "JOHNSONCAB",
+    "type": "SME"
+  },
+  {
+    "name": "Vectras Enprocon Limited",
+    "symbol": "VECTRAS",
     "type": "SME"
   }
 ]
