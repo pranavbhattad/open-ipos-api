@@ -1,7 +1,12 @@
 [
   {
-    "name": "Crystal Crop Protection Limited",
-    "symbol": "CRYSTALCP",
+    "name": "Watrana Rentals Limited",
+    "symbol": "WATRANA",
+    "type": "SME"
+  },
+  {
+    "name": "Mahanadi Coalfields Limited",
+    "symbol": "MAHACOAL",
     "type": "mainboard"
   }
 ]
